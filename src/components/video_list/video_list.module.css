@@ -1,0 +1,6 @@
+.videos {
+  display: flex;
+  flex-wrap: wrap; /* item의 크기에 맞게 배치 */
+  list-style: none;
+  padding-left: 0;
+}
