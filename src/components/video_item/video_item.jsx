@@ -6,9 +6,13 @@ import styles from './video_item.module.css';
      props.video === video
      props.video.snippet === {video: {snippet}}
 */
-const VideoItem = ({video: {snippet}}) => (
+const VideoItem = ({video, video: {snippet}, onVideoClick, display}) => {
+    // displayType에 따라서 클래스를 다르게 사용
+    const displayType = display === 'list' ? styles.list : styles.grid;
+
+    return (
     // 개발자도구(F12) => Components Tab => 값 확인 
-         <li className={styles.container}>
+         <li className={`${styles.container} ${displayType}`} onClick={() => onVideoClick(video)}>
              <div className={styles.video}>
                  {/* 이미지 출력 */}
                 <img className={styles.thumbnail} src={snippet.thumbnails.medium.url} alt="video thumbnail" />
@@ -18,6 +22,6 @@ const VideoItem = ({video: {snippet}}) => (
                 </div>
              </div> 
          </li>
-    );
+    )};
 
 export default VideoItem;
