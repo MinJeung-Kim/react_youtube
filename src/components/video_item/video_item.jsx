@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import styles from './video_item.module.css';
 
 /* 
@@ -6,7 +6,7 @@ import styles from './video_item.module.css';
      props.video === video
      props.video.snippet === {video: {snippet}}
 */
-const VideoItem = ({video, video: {snippet}, onVideoClick, display}) => {
+const VideoItem = memo(({video, video: {snippet}, onVideoClick, display}) => {
     // displayType에 따라서 클래스를 다르게 사용
     const displayType = display === 'list' ? styles.list : styles.grid;
 
@@ -22,6 +22,6 @@ const VideoItem = ({video, video: {snippet}, onVideoClick, display}) => {
                 </div>
              </div> 
          </li>
-    )};
+    )});
 
 export default VideoItem;

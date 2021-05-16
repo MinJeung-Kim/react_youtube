@@ -1,35 +1,47 @@
+import axios from 'axios';
+
 // 필요한 네트워크 처리 담당
 class Youtube {
-  constructor(key) {
-    this.key = key;
-    // 기본 옵션 설정
-    this.getRequestOptions = {
-      method: 'GET',
-      redirect: 'follow',
-    };
+  // 통신 정보를 감추고 싶을때
+  constructor(httpClient) {
+    this.youtube = httpClient;
   }
 
+  // 기본적으로 유튜브와 통신하는 클라이언트 생성
+  // constructor(key) {
+  //   this.youtube = axios.create({
+  //     baseURL: 'https://www.googleapis.com/youtube/v3',
+  //     // 공통적으로 쓰는 파라미터 설정
+  //     params: { key: key },
+  //   });
+  // }
+
   async mostPopular() {
-    const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=${this.key}`,
-      this.getRequestOptions
-    );
-    const result_1 = await response.json();
-    return result_1.items;
+    const response = await this.youtube.get('videos', {
+      params: {
+        part: 'snippet',
+        chart: 'mostPopular',
+        maxResults: 25,
+      },
+    });
+
+    return response.data.items;
   }
 
   async search(query) {
-    return (
-      fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&type=video&key=${this.key}`,
-        this.getRequestOptions
-      )
-        .then((response) => response.json())
-        // 기존의 item의 데이터를 유지하면서 item안의 id만 오브젝트가 아닌 id로 업데이트
-        .then((result) =>
-          result.items.map((item) => ({ ...item, id: item.id.videoId }))
-        )
-    );
+    const response = await this.youtube.get('videos', {
+      params: {
+        part: 'snippet',
+        maxResults: 25,
+        type: 'video',
+        q: query,
+      },
+    });
+
+    return response.data.items.map((item) => ({
+      ...item,
+      id: item.id.videoId,
+    }));
   }
 }
 

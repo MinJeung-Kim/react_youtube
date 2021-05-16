@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import styles from './app.module.css'; 
 import SearchHeader from './components/search_header/search_header';
 import VideoDetail from './components/video_detail/video_detail';
@@ -17,13 +17,14 @@ function App({youtube}) {
     setSelectVideo(video);
   };
 
-  const search = (query) => {
-    youtube.search(query)
+  const search = useCallback((query) => {
+    youtube
+    .search(query)
     .then(videos => {
       setVideos(videos);
       setSelectVideo(null);
     });
-  }
+  }, [youtube]);
 
   //마운트, 업데이트가 됐을때 콜백함수 호출
   //두번째 인자 [] => 업데이트 될때마다 통신 지양, 마운트가 되었을때 한번만 콜백 함수 호출되도록 설정
@@ -31,7 +32,7 @@ function App({youtube}) {
     youtube
     .mostPopular()
     .then(videos => setVideos(videos));
-  }, []);
+  }, [youtube]);
   return (
     <div className={styles.app}>
       <SearchHeader onSearch={search}/>
