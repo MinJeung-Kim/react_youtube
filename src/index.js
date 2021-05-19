@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './app';
 import Youtube from './service/youtube';
 import axios from 'axios';
+import '@fortawesome/fontawesome-free/js/all.js';
 
 const httpClient = axios.create({
   baseURL: 'https://www.googleapis.com/youtube/v3',
@@ -12,8 +14,10 @@ const httpClient = axios.create({
 const youtube = new Youtube(httpClient);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App youtube={youtube} />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <React.StrictMode>
+      <App youtube={youtube} />
+    </React.StrictMode>
+  </BrowserRouter>,
   document.getElementById('root')
 );

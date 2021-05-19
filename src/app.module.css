@@ -1,9 +1,24 @@
 .app {
-  max-width: 80rem;
+  /* max-width: 80rem; */
+  /* background-color: #f8f8f8; */
+  background-color: white;
 }
 
 .content {
-  display: flex;
+  display: grid;
+  grid-template-columns: 12% 88%;
+}
+
+.content.conList {
+  display: list-item;
+}
+
+.nav {
+  display: block;
+}
+
+.nav.none {
+  display: none;
 }
 
 .detail {
@@ -12,4 +27,17 @@
 
 .list {
   flex: 1 1 30%;
+  background-color: #f8f8f8;
+}
+
+/* 반응형 구현 */
+@media screen and (max-width: 48rem) {
+  .content {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 1329px) {
+  .content {
+    grid-template-columns: 8% 92%;
+  }
 }

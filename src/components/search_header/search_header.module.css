@@ -1,30 +1,109 @@
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 4rem;
   padding: 0.8em 1em;
-  background: black;
-  color: white;
+  background: white;
+  color: black;
+}
+
+.logoBox,
+.searchBox {
+  display: flex;
+  align-items: center;
+}
+
+.searchBox {
+  width: 50%;
+}
+
+.menuImg {
+  width: 3rem;
+  color: darkgray;
+  font-size: 22px;
+  cursor: pointer;
 }
 
 .logo {
   display: flex;
   align-items: center;
   margin-right: 1em;
+  cursor: pointer;
+}
+
+.img {
+  margin-right: 0.3em;
+  width: 30px;
+}
+
+.search {
+  position: relative;
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
 }
 
 .input {
   /* 넓이가 가능한 만큼 채워짐 */
   flex-basis: 100%;
-  font-size: 1.2rem;
-  outline: 0;
+  font-size: 1rem;
+  border: 1px solid #d3d3d3;
+  border-radius: 2px;
+  padding: 0.3rem;
+}
+
+.keyboardImg {
+  position: absolute;
+  right: 0;
+  padding-right: 0.5rem;
+  color: #5d5d5d;
 }
 
 .button {
-  background-color: darkgrey;
-  outline: 0;
+  width: 65px;
+  display: flex;
+  justify-content: center;
+  background-color: #f8f8f8;
+  border: 1px solid #d3d3d3;
+  padding: 0.3rem;
+  cursor: pointer;
 }
 
 .buttonImg {
-  height: 100%;
-  padding: 0.5em 0.2em;
+  color: #807b7b;
+  font-size: 15px;
+}
+
+.microphoneImg {
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  font-size: 17px;
+  color: #5d5d5d;
+  cursor: pointer;
+}
+
+.icons {
+  width: 240px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.cameraImg,
+.topMenuImg,
+.bellImg,
+.propilImg {
+  font-size: 20px;
+  color: #5d5d5d;
+  cursor: pointer;
+}
+
+.propilImg {
+  font-size: 30px;
+  color: #2e6cc8;
 }

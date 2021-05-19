@@ -20,14 +20,31 @@ const SearchHeader = memo(({onSearch}) => {
         };
             return (
                 <header className={styles.header}>
-                    <div className={styles.logo}>
-                        <img className={styles.img} src="/images/logo.png" alt="logo" />
-                        <h1 className={styles.title}>Youtube</h1>
-                    </div> 
-                    <input ref={inputRef} className={styles.input} type="search" placeholder="Search..." onKeyPress={onKeyPress}/>
-                    <button className={styles.button} type="submit" onClick={onClick}>
-                        <img className={styles.buttonImg} src="/images/search.png" alt="search" />
-                    </button>
+                    <div className={styles.logoBox}>
+                        <span className={styles.menuImg}><i className="fas fa-bars"></i></span>
+                        <div className={styles.logo}>
+                            <img className={styles.img} src="/images/logo.png" alt="logo" />
+                            <h3 className={styles.title}>Youtube</h3>
+                        </div> 
+                    </div>
+
+                    <div className={styles.searchBox}>
+                        <div className={styles.search}>
+                            <input ref={inputRef} className={styles.input} type="search" placeholder="검색" onKeyPress={onKeyPress}/>
+                            <span className={styles.keyboardImg}><i className="fas fa-keyboard"></i></span>
+                        </div>
+                        <button className={styles.button} type="submit" onClick={onClick}>
+                            <span className={styles.buttonImg}><i className="fas fa-search"></i></span>
+                        </button>
+                        <span className={styles.microphoneImg}><i className="fas fa-microphone"></i></span>
+                    </div>
+                   
+                    <div className={styles.icons}>
+                        <span className={styles.cameraImg}><i className="fas fa-video"></i></span>
+                        <span className={styles.topMenuImg}><i className="fas fa-th"></i></span>
+                        <span className={styles.bellImg}><i className="fas fa-bell"></i></span>
+                        <span className={styles.propilImg}><i className="fas fa-user-circle"></i></span>
+                    </div>
                 </header>
             );
         }

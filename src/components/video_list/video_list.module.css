@@ -1,7 +1,13 @@
-.videos {
+/* .videos {
   display: flex;
-  flex-wrap: wrap; /* item의 크기에 맞게 배치 */
-  list-style: none;
+  flex-wrap: wrap; item의 크기에 맞게 배치  
   padding-left: 0;
+  margin: 0;
+} */
+
+.videos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 2rem;
   margin: 0;
 }

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import styles from './app.module.css'; 
+import MenuList from './components/menu_list/menu_list';
 import SearchHeader from './components/search_header/search_header';
 import VideoDetail from './components/video_detail/video_detail';
 import VideoList from './components/video_list/video_list';
@@ -36,8 +37,11 @@ function App({youtube}) {
   return (
     <div className={styles.app}>
       <SearchHeader onSearch={search}/>
-      <section className={styles.content}>
-      {/* 선택된 비디오가 있다면 VideoDetail 컴포넌트를 이용해서 video에 selected된 video전달. */}
+      <section className={`${styles.content}  ${selectedVideo && styles.conList}`}>  
+          <nav className={`${styles.nav} ${selectedVideo && styles.none}`}>
+            <MenuList />
+          </nav>  
+        {/* 선택된 비디오가 있다면 VideoDetail 컴포넌트를 이용해서 video에 selected된 video전달. */}
         {selectedVideo && (
           <div className={styles.detail}>
             <VideoDetail video={selectedVideo} />
