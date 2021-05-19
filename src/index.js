@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './app';
 import Youtube from './service/youtube';
@@ -14,10 +13,8 @@ const httpClient = axios.create({
 const youtube = new Youtube(httpClient);
 
 ReactDOM.render(
-  <BrowserRouter>
-    <React.StrictMode>
-      <App youtube={youtube} />
-    </React.StrictMode>
-  </BrowserRouter>,
+  <React.StrictMode>
+    <App youtube={youtube} />
+  </React.StrictMode>,
   document.getElementById('root')
 );

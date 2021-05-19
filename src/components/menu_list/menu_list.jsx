@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'; 
 import styles from './menu_list.module.css';
 
 const MenuList = (props) => (
